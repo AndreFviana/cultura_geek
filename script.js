@@ -5,38 +5,38 @@ const btnEnviar = document.getElementById('btn-enviar');
 const feedbackUsuario = document.getElementById('feedback-usuario')
 const produtosCadastrados = document.getElementById('produtos-cadastrados')
 
-//capturando as informações digitadas pelo usuário e enviando-as para o backend
-fetch('https://httpbin.org/')
-.then(response => response.json())
-.then(data =>{
-    console.log('sucesso', data);
-})
-.catch((error)=>{
-    alert= 'Não foi possível adicionar o produto'
-    console.log(error);
-})
+
 function cadastrarProduto (evento){
     evento.preventDefault()
-   
-   
-    nomeProduto.value
-    valorProduto.value
-
+//capturando as informações digitadas pelo usuário, tranformando-as em formato JSON e salvando em uma string 
     const jsonBody =    JSON.stringify({
         titulo: nomeProduto.value,
-        mensagem: valorProduto.value
+        mensagem: valorProduto.value,
+        descricao : descricaoProduto.value
     })
     console.log(jsonBody)
-    
-    fetch('https://httpbin.org/post'),{
-        method: 'post',
+    //enviando as informações para o backend
+    fetch('https://httpbin.org/post',{
+        method: 'POST',
         headers: {
             "Content-Type": "application/json",
         },
         body: jsonBody
         
-    }
-    
+    })
+    .then(response => { response.json();
+    })
+
+    .then(data => {
+        console.log('sucesso', data)
+    document.getElementById('feedback-usuario').textContent='Produto cadastrado com sucesso!';
+})
+//tratando possível erro de requisição
+    .catch(error=>{
+        console.error(error);
+        alert('Deu erro!')
+    })
+
 }
 
 btnEnviar.addEventListener('click', cadastrarProduto)
