@@ -30,6 +30,8 @@ function cadastrarProduto (evento){
     .then(data => {
         console.log('sucesso', data)
     document.getElementById('feedback-usuario').textContent='Produto cadastrado com sucesso!';
+    
+    
 })
 //tratando possível erro de requisição
     .catch(error=>{
