@@ -31,12 +31,14 @@ function cadastrarProduto (evento){
         console.log('sucesso', data)
     document.getElementById('feedback-usuario').textContent='Produto cadastrado com sucesso!';
     
-    
+    nomeProduto.value = '' ;
+    valorProduto.value = '' ;
+    descricaoProduto.value = '' ;
 })
 //tratando possível erro de requisição
     .catch(error=>{
         console.error(error);
-        alert('Deu erro!')
+        document.getElementById('feedback-usuario').textContent='Erro ao cadastrar o produto. Tente novamente.';
     })
 
 }
