@@ -17,7 +17,7 @@ function cadastrarProduto (evento){
     })
     console.log(jsonBody)
     //enviando as informações para o backend
-    fetch('https://httpbin.org/post',{
+    fetch('ttps://httpbin.org/post',{
         method: 'POST',
         headers: {
             "Content-Type": "application/json",

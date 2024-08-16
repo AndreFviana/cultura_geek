@@ -7,3 +7,6 @@
 
 ### resultado após cadastrar o produto com sucesso
 <img src="./api-css2.png" alt="print da pagina">
+
+### resultado após erro
+<img src="./api-css3.png" alt="print da pagina">
