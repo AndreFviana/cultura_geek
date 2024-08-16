@@ -6,6 +6,7 @@ const feedbackUsuario = document.getElementById('feedback-usuario')
 const produtosCadastrados = document.getElementById('produtos-cadastrados')
 
 
+
 function cadastrarProduto (evento){
     evento.preventDefault()
 //capturando as informações digitadas pelo usuário, tranformando-as em formato JSON e salvando em uma string 
@@ -31,10 +32,20 @@ function cadastrarProduto (evento){
         console.log('sucesso', data)
     document.getElementById('feedback-usuario').textContent='Produto cadastrado com sucesso!';
     
+    //adicionando no DOM, uma tag h4 que receberá os produtos cadastrados pelo usuário
+    let novoElemento = document.createElement('h4')
+    novoElemento.innerText = `
+    ${nomeProduto.value}, ${valorProduto.value}, ${descricaoProduto.value}
+    `
+    produtosCadastrados.appendChild(novoElemento) ;
+    console.log(novoElemento)
+   
     nomeProduto.value = '' ;
     valorProduto.value = '' ;
     descricaoProduto.value = '' ;
+
 })
+
 //tratando possível erro de requisição
     .catch(error=>{
         console.error(error);
