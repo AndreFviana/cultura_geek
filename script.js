@@ -16,8 +16,9 @@ function cadastrarProduto (evento){
         descricao : descricaoProduto.value
     })
     console.log(jsonBody)
+    
     //enviando as informações para o backend
-    fetch('ttps://httpbin.org/post',{
+    fetch('https://httpbin.org/post',{
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
@@ -55,3 +56,22 @@ function cadastrarProduto (evento){
 }
 
 btnEnviar.addEventListener('click', cadastrarProduto)
+//array para o reduce
+const produtos = [
+    {id : 1, nome: "detergente", valor: 2.00, categoria: "limpeza" 
+    },
+    {id : 2, nome: "amaciante", valor: 6.50, categoria: "limpeza" 
+    },
+    {id : 3, nome: "pão", valor: 2.00, categoria: "alimentação" 
+    },
+    {id : 4, nome: "queijo", valor: 7.00, categoria: "alimentação" 
+    },
+    {id : 5, nome: "leite", valor: 2.20, categoria: "alimentação" 
+    }
+]
+
+//REDUCE: nessa situação. irá somar todos os valores dos produtos e retornar o total
+const totalValor = produtos
+.filter(p => p.categoria === "alimentação")
+.reduce((acc, p) => acc + p.valor, 0)
+console.log(totalValor.toFixed(2))
